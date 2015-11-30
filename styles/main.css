@@ -1,0 +1,160 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+.main {
+    max-width:65em;
+    text-align: center;
+    min-height:800px;
+}
+
+.navbar-default {
+    background-color: #212121;
+    border-color:#212121;
+    border-radius:0;
+    padding:10px;
+    height:70px;
+}
+
+.navbar-brand img {
+    float:left;
+    zoom:0.5;
+    margin:-15px 0 0 -15px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color:#fff;
+    font-weight:300;
+}
+
+.navbar-default .navbar-nav > .active > a {
+    background-color: inherit;
+    color:#fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color:#e11e25;
+    background-color:inherit;
+}
+
+.navbar {
+    border:none;
+    margin-bottom:0;
+}
+
+#search {
+    margin:0;
+    background-color:#333333;
+    border-top:2px solid #454545;
+    border-bottom:none;
+    padding:25px;
+}
+
+#search input {
+    width:100%;
+    padding:5px;
+}
+
+#greeting {
+    background-image: url('../images/bg-welcome-hero.png');
+    background-color: #333333;
+    height:122px;
+    padding:20px;
+    text-align: center;
+}
+
+#greeting h1 {
+    color:#fff;
+    font-weight:300;
+}
+
+.name {
+    color:#d2222a;
+}
+
+#nl-form select, .nl-field, .nl-field-toggle {
+    color:#e11e25;
+    line-height: 1em;
+    border-radius:0;
+}
+
+a.nl-field {
+    border-bottom:none;
+}
+
+#nl-form select, a.nl-field-toggle {
+    border-bottom:1px solid #e11e25;
+}
+
+#nl-form select:hover, .nl-field:hover, a.nl-field-toggle:hover {
+    color:#e11e25;
+    box-shadow:1px 1px solid #555;
+    border-bottom:none;
+}
+
+.nl-field.nl-field-open ul {
+    list-style-type: none;
+    padding:10px;
+    cursor: pointer;
+    background-color: #e11e25;
+    text-align: left;
+    line-height: 1.5;
+    top:115px;
+    left:0;
+    font-size:40%;
+}
+
+.nl-dd ul li.nl-dd-checked {
+    color:#6f0004;
+}
+
+.nl-form button.btn-danger {
+    background-color: #e11e25;
+    padding: 5px 25px;
+    color: #fff;
+    font-size: 0.6em;
+}
+
+.results {
+    text-align: left;
+    margin:50px 0;
+}
+
+.solutionFooter {
+    text-align: center;
+    margin-top:65px;
+}
+
+.solutionFooter a {
+    font-size:2em;
+    line-height:2em;
+    color:#7b7b7b;
+    text-decoration: underline;
+}
+
+.solutionFooterLeft {
+    float:left;
+}
+
+.solutionFooterRight {
+    float:right;
+}
+
+#footer {
+    background-color:#333;
+    min-height:500px;
+    padding-top:50px;
+}
+
+#footer a {
+    font-size:1.3em;
+    line-height: 4em;
+    display: block;
+    clear:both;
+    color:#7b7b7b;
+    text-align: left;
+}
+
+#footer .main {
+    min-height:500px;
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solution Center</title>
+
+    <link rel="stylesheet" type="text/css" href="natLang/css/default.css" />
+    <link rel="stylesheet" type="text/css" href="natLang/css/component.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet"/>
+    <link href="styles/main.css" rel="stylesheet"/>
+</head>
+<body ng-app="SolutionCenter">
+<div ng-controller="HomePage" ng-cloak>{{ pristineForm }}
+    <div id="header">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img src="images/ServiceNow.png" alt="Service Now" class="logo" />
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#placeholder">Solutions</a></li>
+                        <li><a href="#placeholder">Wins</a></li>
+                        <li><a href="#placeholder">People</a></li>
+                        <li><a href="#placeholder">Demo Center</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="active"><a href="#placeholder">Corey Micek</a></li>
+                        <li><a href="#placeholder">Log Out</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+
+        <div id="search">
+            <input type="text" placeholder="Search Solution Center..." class="search" ng-model="search" onchange="pristineForm!=pristineForm"/>
+        </div>
+
+    </div>
+
+
+        <div id="greeting">
+            <h1 class="name">Welcome, <span class="name">{{ name }}</span>! What would you like to accomplish today?</h1>
+        </div>
+        <div class="main clearfix">
+            <form id="nl-form" class="nl-form">
+                I need a
+                <div class="nl-field" ng-class="{'nl-field-open': nlFieldOpen.name}">
+                    <a class="nl-field-toggle" ng-click="nlFieldOpenToggle('name')">{{ currentItem.name }}</a>
+                    <ul>
+                        <li ng-repeat="(key, value) in filters.name" ng-click="nlFieldOpenToggle('name', key, value)" ng-class="{ checked: currentItem.name == value }">{{ value }}</li>
+                    </ul>
+                </div>
+                for
+                <div class="nl-field" ng-class="{'nl-field-open': nlFieldOpen.industry}">
+                    <a class="nl-field-toggle" ng-click="nlFieldOpenToggle('industry')">{{ currentItem.industry }}</a>
+                    <ul>
+                        <li ng-repeat="(key, value) in filters.industry" ng-click="nlFieldOpenToggle('industry', key, value)" ng-class="{ checked: currentItem.industry == value }">{{ value }}</li>
+                    </ul>
+
+                </div>
+                <br />and
+                <div class="nl-field" ng-class="{'nl-field-open': nlFieldOpen.product}">
+                    <a class="nl-field-toggle" ng-click="nlFieldOpenToggle('product')">{{ currentItem.product }}</a>
+                    <ul>
+                        <li ng-repeat="(key, value) in filters.product" ng-click="nlFieldOpenToggle('product', key, value)" ng-class="{ checked: currentItem.product == value }">{{ value }}</li>
+                    </ul>
+
+                </div>.
+                <div class="nl-submit-wrap" ng-if="pristineForm">
+                    <button type="button" class="btn btn-danger">Find it!</button>
+                </div>
+                <div class="nl-overlay"></div>
+            </form>
+
+
+            <div class="results" ng-if="!pristineForm">
+                <div class="solutions" ng-if="(solutions|formSelected:currentItem).length">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <tr>
+                                <th width="30%">Solution</th>
+                                <th width="30%">Industry</th>
+                                <th width="30%">Product</th>
+                            </tr>
+                            <tr ng-repeat="sol in solutions | formSelected:currentItem">
+                                <td><a href="/solutions/{{ sol.id }}">{{ sol.name }}</a></td>
+                                <td><a href="/solutions/industries/{{ sol.industry }}">{{ sol.industry }}</a></td>
+                                <td><a href="/solutions/products/{{ sol.product }}">{{ sol.product }}</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="wins" ng-if="(wins|formSelected:currentItem).length">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <tr>
+                                <th width="30%">Solution Wins</th>
+                                <th width="30%">Industry</th>
+                                <th width="30%">Product</th>
+                            </tr>
+                            <tr ng-repeat="win in wins | formSelected:currentItem">
+                                <td><a href="/wins/{{ win.id }}">{{ win.name }}</a></td>
+                                <td><a href="/wins/industries/{{ win.industry }}">{{ win.industry }}</a></td>
+                                <td><a href="/wins/products/{{ win.product }}">{{ win.product }}</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="solutionFooter">
+                <div class="solutionFooterLeft">
+                    <img src="images/screen-shot-2015-10-27-at-40718-p-m.png" /><br />
+                    <a href="#placeholder">Submit a Solution</a><br />
+                    <a href="#placeholder">View My Solutions</a>
+                </div>
+                <div class="solutionFooterRight">
+                    <img src="images/screen-shot-2015-10-27-at-23907-p-m-copy-2.png" /><br />
+                    <a href="#placeholder">Submit a Solution Win</a><br />
+                    <a href="#placeholder">View My Solution Wins</a>
+                </div>
+            </div>
+    </div>
+
+        <div id="footer">
+            <div class="main">
+                <div class="col-md-4">
+                    <a href="#placeholder">Solutions</a>
+                    <a href="#placeholder">Solution Wins</a>
+                    <a href="#placeholder">People</a>
+                    <a href="#placeholder">Enablement</a>
+                </div>
+                <div class="col-md-4">
+                    <a href="#placeholder">Standard View</a>
+                    <a href="#placeholder">Demo Center</a>
+                </div>
+                <div class="col-md-4">
+                    <a href="#placeholder">Create an Incident</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+<script src="natLang/js/nlform.js"></script>
+<script src="natLang/js/nlForm.select.js"></script>
+<script src="scripts/app.js"></script>
+<script>
+    var nlform = new NLForm( document.getElementById( 'nl-form' ) );
+</script>
+</body>
+</html>
