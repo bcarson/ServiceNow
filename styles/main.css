@@ -99,7 +99,7 @@ a.nl-field {
     background-color: #e11e25;
     text-align: left;
     line-height: 1.5;
-    top:115px;
+    top:50px;
     left:0;
     font-size:40%;
 }
@@ -157,4 +157,8 @@ a.nl-field {
 
 #footer .main {
     min-height:500px;
+}
+
+.reset {
+    text-align:center;
 }

@@ -12,7 +12,7 @@
     <link href="styles/main.css" rel="stylesheet"/>
 </head>
 <body ng-app="SolutionCenter">
-<div ng-controller="HomePage" ng-cloak>{{ pristineForm }}
+<div ng-controller="HomePage" ng-cloak>
     <div id="header">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -39,11 +39,10 @@
         </nav>
 
         <div id="search">
-            <input type="text" placeholder="Search Solution Center..." class="search" ng-model="search" onchange="pristineForm!=pristineForm"/>
+            <input type="text" placeholder="Search Solution Center..." class="search" ng-model="currentItem.search" ng-change="activateSearch(currentItem.search)"/>
         </div>
 
     </div>
-
 
         <div id="greeting">
             <h1 class="name">Welcome, <span class="name">{{ name }}</span>! What would you like to accomplish today?</h1>
@@ -54,7 +53,7 @@
                 <div class="nl-field" ng-class="{'nl-field-open': nlFieldOpen.name}">
                     <a class="nl-field-toggle" ng-click="nlFieldOpenToggle('name')">{{ currentItem.name }}</a>
                     <ul>
-                        <li ng-repeat="(key, value) in filters.name" ng-click="nlFieldOpenToggle('name', key, value)" ng-class="{ checked: currentItem.name == value }">{{ value }}</li>
+                        <li ng-repeat="(key, value) in filters.name" ng-click="nlFieldOpenToggle('name', key, value)" >{{ value }}</li>
                     </ul>
                 </div>
                 for
@@ -79,9 +78,14 @@
                 <div class="nl-overlay"></div>
             </form>
 
-
             <div class="results" ng-if="!pristineForm">
-                <div class="solutions" ng-if="(solutions|formSelected:currentItem).length">
+                <div class="reset" ng-if="!(solutions|formSelected:currentItem).length && !(wins|formSelected:currentItem).length">
+                    <h2>No results found.</h2>
+                    <button class="btn btn-danger btn-lg" ng-click="resetSearch()">Reset Search</button>
+                    <button class="btn btn-success btn-lg" ng-click="showAll()">Show All</button>
+                </div>
+
+                <div class="solutions" ng-if="(solutions|formSelected:currentItem).length && showSolutions">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover">
                             <tr>
@@ -98,8 +102,7 @@
                     </div>
                 </div>
 
-
-                <div class="wins" ng-if="(wins|formSelected:currentItem).length">
+                <div class="wins" ng-if="(wins|formSelected:currentItem).length && showWins">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover">
                             <tr>
